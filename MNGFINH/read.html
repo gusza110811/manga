@@ -9,7 +9,6 @@
         img {
             max-width: 6in;
             min-width: 50%;
-            display: inline-block;
         }
         button {
             line-height: 200%;
@@ -17,6 +16,9 @@
     </style>
     <script>
         function loadChapter() {
+            const latestchapter = 4
+
+
             const params = new URLSearchParams(window.location.search);
             let chapter = params.get('ch') || '1';
             document.title = `แฟนใหม่ไม่ใช่มนุษย์? ตอน ${chapter}`;
@@ -29,12 +31,24 @@
                 img.src = `pages/MNGFINH Ch${chapter}P${i}.png`;
                 img.onerror = () => img.remove(); // Remove missing images
                 imageContainer.appendChild(img);
+                imageContainer.appendChild(document.createElement('br'))
             }
             
-            document.getElementById('prev').href = `?ch=${Math.max(1, chapter - 1)}`;
-            document.getElementById('next').href = `?ch=${parseInt(chapter) + 1}`;
+            if (chapter != 1){
+                document.getElementById('prev').href = `?ch=${Math.max(1, chapter - 1)}`;
+            } else {
+                document.getElementById('prev').remove()
+            }
+            if (chapter < latestchapter){
+                document.getElementById('next').href = `?ch=${parseInt(chapter) + 1}`;
+            } else {
+                document.getElementById('next').remove()
+            }
         }
     </script>
+
+    <meta content="แฟนใหม่ไม่ใช่มนุษย์?" property="og:title" />
+    <meta content="อ่านเลย!" property="og:description" />
 </head>
 <body onload="loadChapter()">
     <h1>แฟนใหม่ไม่ใช่มนุษย์? ตอน <span id="chapter-title"></span></h1>

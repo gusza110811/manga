@@ -9,13 +9,20 @@
 
     <style>
 .grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  max-width: 800px;
-  margin: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    max-width: 800px;
+    margin: auto;
+}
+
+a {
+    display: contents;
 }
 
     </style>
+
+    <meta content="แฟนใหม่ไม่ใช่มนุษย์?" property="og:title" />
+    <meta content="อ่านมังงะฟรี มีแปลไทย ไม่มีโฆษนา" property="og:description" />
 </head>
 <body>
     <a href="../index.html"><button>กลับหน้าหลัก</button></a>
@@ -25,29 +32,41 @@
 
         <img src="Art.jpg" alt="แฟนใหม่ไม่ใช่มนุษย์?" style="width: 3in; grid-row-start: 1; grid-row-end: 4;">
 
-        <a href="1.html" style="display: contents;"><button><h2>อ่านตอนแรก</h2></button></a>
+        <a href="read.html?ch=1"><button><h2>อ่านตอนแรก</h2></button></a>
 
         <label for="chapter" style="display: contents;">
             <h2>เลือกตอน
-                <select name="chapter" id="chapter">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                <select name="chapter" id="chapter"></select>
             </h2>
-
-            <button onclick="choosechapter()"><h2>อ่าน</h2></button>
+            <button onclick="chooseChapter()"><h2>อ่าน</h2></button>
         </label>
         <br>
-        <a href="https://x.com/NeitheYAGI" style="grid-row: 5; grid-column-start: 1; grid-column-end: 3;">เจ้าของต้นฉบับ</a>
+        <a href="https://x.com/NeitheYAGI" style="grid-row: 5; grid-column-start: 1; grid-column-end: 3;" target="_blank">เจ้าของต้นฉบับ</a>
     </div>
-</body>
 
-<script>
-    function choosechapter() {
-        chapterselector = document.getElementById("chapter")
-        
-        window.location.href = chapterselector.value + ".html"
-    }
-</script>
+
+    <script>
+        const availableChapters = [1, 2, 3, 4];
+
+        function populateChapterSelector() {
+            const chapterSelect = document.getElementById("chapter");
+            chapterSelect.innerHTML = "";
+            availableChapters.forEach(ch => {
+                const option = document.createElement("option");
+                option.value = ch;
+                option.textContent = ch;
+                chapterSelect.appendChild(option);
+            });
+        }
+    
+        function choosechapter() {
+            chapterselector = document.getElementById("chapter")
+            
+            window.location.href = "read.html?ch=" + chapterselector.value
+        }
+
+        populateChapterSelector()
+    </script>
+</body>
 
 </html>
