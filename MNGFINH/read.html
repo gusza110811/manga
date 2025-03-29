@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แฟนใหม่ไม่ใช่มนุษย์? ตอน <span id="chapter-title"></span></title>
+    <link rel="stylesheet" href="https://gusza.is-a.dev/style.css">
+    <style>
+        img {
+            max-width: 6in;
+            min-width: 50%;
+            display: inline-block;
+        }
+        button {
+            line-height: 200%;
+        }
+    </style>
+    <script>
+        function loadChapter() {
+            const params = new URLSearchParams(window.location.search);
+            let chapter = params.get('ch') || '1';
+            document.title = `แฟนใหม่ไม่ใช่มนุษย์? ตอน ${chapter}`;
+            document.getElementById('chapter-title').innerText = chapter;
+            
+            let imageContainer = document.getElementById('images');
+            imageContainer.innerHTML = '';
+            for (let i = 1; i <= 10; i++) { // Adjust max pages per chapter if needed
+                let img = document.createElement('img');
+                img.src = `pages/MNGFINH Ch${chapter}P${i}.png`;
+                img.onerror = () => img.remove(); // Remove missing images
+                imageContainer.appendChild(img);
+            }
+            
+            document.getElementById('prev').href = `?ch=${Math.max(1, chapter - 1)}`;
+            document.getElementById('next').href = `?ch=${parseInt(chapter) + 1}`;
+        }
+    </script>
+</head>
+<body onload="loadChapter()">
+    <h1>แฟนใหม่ไม่ใช่มนุษย์? ตอน <span id="chapter-title"></span></h1>
+    <div id="images"></div>
+    <br>
+    <a id="prev"><button>ตอนที่แล้ว</button></a>
+    <a href="index.html"><button>ย้อนกลับ</button></a>
+    <a id="next"><button>ตอนต่อไป</button></a>
+</body>
+</html>
