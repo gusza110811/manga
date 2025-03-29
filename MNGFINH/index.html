@@ -24,7 +24,7 @@ a {
     <meta content="แฟนใหม่ไม่ใช่มนุษย์?" property="og:title" />
     <meta content="อ่านมังงะฟรี มีแปลไทย ไม่มีโฆษนา" property="og:description" />
 </head>
-<body>
+<body onload="populateChapterSelector()">
     <a href="../index.html"><button>กลับหน้าหลัก</button></a>
     <h1>แฟนใหม่ไม่ใช่มนุษย์?</h1>
 
@@ -38,35 +38,35 @@ a {
             <h2>เลือกตอน
                 <select name="chapter" id="chapter"></select>
             </h2>
-            <button onclick="chooseChapter()"><h2>อ่าน</h2></button>
+            <button onclick="choosechapter()"><h2>อ่าน</h2></button>
         </label>
         <br>
         <a href="https://x.com/NeitheYAGI" style="grid-row: 5; grid-column-start: 1; grid-column-end: 3;" target="_blank">เจ้าของต้นฉบับ</a>
     </div>
 
 
-    <script>
-        const availableChapters = [1, 2, 3, 4];
 
-        function populateChapterSelector() {
-            const chapterSelect = document.getElementById("chapter");
-            chapterSelect.innerHTML = "";
-            availableChapters.forEach(ch => {
-                const option = document.createElement("option");
-                option.value = ch;
-                option.textContent = ch;
-                chapterSelect.appendChild(option);
-            });
-        }
-    
-        function choosechapter() {
-            chapterselector = document.getElementById("chapter")
-            
-            window.location.href = "read.html?ch=" + chapterselector.value
-        }
-
-        populateChapterSelector()
-    </script>
 </body>
+
+<script>
+    const availableChapters = [1, 2, 3, 4];
+
+    function populateChapterSelector() {
+        const chapterSelect = document.getElementById("chapter");
+        chapterSelect.innerHTML = "";
+        availableChapters.forEach(ch => {
+            const option = document.createElement("option");
+            option.value = ch;
+            option.textContent = ch;
+            chapterSelect.appendChild(option);
+        });
+    }
+
+    function choosechapter() {
+        chapterselector = document.getElementById("chapter")
+        
+        window.location.href = "read.html?ch=" + chapterselector.value
+    }
+</script>
 
 </html>
