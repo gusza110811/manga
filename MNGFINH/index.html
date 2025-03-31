@@ -25,14 +25,14 @@ a {
     <meta content="อ่านมังงะฟรี มีแปลไทย ไม่มีโฆษนา" property="og:description" />
 </head>
 <body onload="populateChapterSelector()">
-    <a href="../index.html"><button>กลับหน้าหลัก</button></a>
+    <a href="../"><button>กลับหน้าหลัก</button></a>
     <h1>แฟนใหม่ไม่ใช่มนุษย์?</h1>
 
     <div class="grid-container">
 
         <img src="Art.jpg" alt="แฟนใหม่ไม่ใช่มนุษย์?" style="width: 3in; grid-row-start: 1; grid-row-end: 4;">
 
-        <a href="read.html?ch=1"><button><h2>อ่านตอนแรก</h2></button></a>
+        <a href="read?ch=1"><button><h2>อ่านตอนแรก</h2></button></a>
 
         <label for="chapter" style="display: contents;">
             <h2>เลือกตอน
@@ -65,7 +65,7 @@ a {
     function choosechapter() {
         chapterselector = document.getElementById("chapter")
         
-        window.location.href = "read.html?ch=" + chapterselector.value
+        window.location.href = "read?ch=" + chapterselector.value
     }
 </script>
 
