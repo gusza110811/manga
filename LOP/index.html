@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วันของพยองโกะ</title>
+
+    <link rel="stylesheet" href="https://gusza.is-a.dev/style.css">
+
+    <style>
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    max-width: 800px;
+    margin: auto;
+}
+
+a {
+    display: contents;
+}
+
+    </style>
+
+    <meta content="วันของพยองโกะ" property="og:title" />
+    <meta content="อ่านมังงะฟรี มีแปลไทย ไม่มีโฆษนา" property="og:description" />
+</head>
+<body onload="populateChapterSelector()">
+    <a href="../"><button>กลับหน้าหลัก</button></a>
+    <h1>วันของพยองโกะ</h1>
+
+    <div class="grid-container">
+
+        <img src="Art.jpg" alt="วันของพยองโกะ" style="width: 3in; grid-row-start: 1; grid-row-end: 4;">
+
+        <a href="read.html?ch=1"><button><h2>อ่านตอนแรก</h2></button></a>
+
+        <label for="chapter" style="display: contents;">
+            <h2>เลือกตอน
+                <select name="chapter" id="chapter"></select>
+            </h2>
+            <button onclick="choosechapter()"><h2>อ่าน</h2></button>
+        </label>
+        <br>
+        <a href="https://x.com/NeitheYAGI" style="grid-row: 5; grid-column-start: 1; grid-column-end: 3;" target="_blank">เจ้าของต้นฉบับ</a>
+    </div>
+
+
+
+</body>
+
+<script>
+    const availableChapters = [1];
+
+    function populateChapterSelector() {
+        const chapterSelect = document.getElementById("chapter");
+        chapterSelect.innerHTML = "";
+        availableChapters.forEach(ch => {
+            const option = document.createElement("option");
+            option.value = ch;
+            option.textContent = ch;
+            chapterSelect.appendChild(option);
+        });
+    }
+
+    function choosechapter() {
+        chapterselector = document.getElementById("chapter")
+        
+        window.location.href = "read.html?ch=" + chapterselector.value
+    }
+</script>
+
+</html>
